@@ -107,6 +107,7 @@ heat.plot = function(df, legend.label = "Return"){
   # plot
   ggplot(data = plot.data, aes(x = HML, y = SMB, fill = Return)) + 
     geom_tile() + 
+    scale_y_discrete(limits = rev(levels(plot.data$SMB))) +
     geom_text(aes(label=round(Return, digits = 2))) + 
     labs(fill = legend.label)
 }
@@ -114,8 +115,8 @@ heat.plot = function(df, legend.label = "Return"){
 # mean excess return of the 25 FF portfolios
 heat.plot(colMeans(P25[,-1] - FF3$RF))
 
-heat.plot(alpha,       "Alpha")
-heat.plot(market.beta, "Market Beta")
-heat.plot(SMB.beta,    "SMB Beta")
-heat.plot(HML.beta,    "HML Beta")
+heat.plot(betas[1, ], "Alpha")
+heat.plot(betas[2, ], "Market Beta")
+heat.plot(betas[3, ], "SMB Beta")
+heat.plot(betas[4, ], "HML Beta")
 
