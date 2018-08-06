@@ -6,6 +6,9 @@
 
 #1# Data preparation
 
+library(quantmod)
+library(xts)
+library(ggplot2)
 library (readxl)
 
 # FF3 is the monthly data collection of the three factors from 1963/07 to 1991/12
